@@ -44,7 +44,7 @@ break;
     var venue = data[0].venue.name;
     var location = data[0].venue.city;
     var date = moment(data[0].datetime).format("MM/DD/YYYY");
-    console.log(venue, location, date);
+    console.log(venue, "\n" + location, "\n" + date);
   })
   .catch(function (error) {
     console.log('Sorry an error has occured' + error);
@@ -62,7 +62,7 @@ break;
         let lang = data.Language;
         let plot = data.Plot;
         let act = data.Actors;
-        console.log(title, year, rating, rating2, country, lang, plot, act);
+        console.log(title, "\n" + year,"\n" +  rating, "\n" + rating2, "\n" + country, "\n" + lang,"\n" +  plot, "\n" + act);
       })
       .catch(function (error) {
         console.log('Sorry an error has occured' + error);
