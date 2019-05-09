@@ -1,18 +1,12 @@
 require("dotenv").config();
-var inquirer = require("inquirer");
+const fs = require("fs");
+const inquirer = require("inquirer");
 const moment = require('moment');
 const axios = require("axios");
 const Spotify = require('node-spotify-api');
 const keys = require("./keys.js");
 const spotify = new Spotify(keys.spotify);
-// const command = process.argv[2];
-// const userInput = process.argv;
-// var inputArr = [];
-// for (var i = 3; i < userInput.length; i++){
-//   inputArr.push(userInput[i]);
-// }
-// var secondIt = inputArr.toLocaleString();
-// var input = secondIt.split(",");
+
 
 inquirer.prompt([
   {
@@ -25,6 +19,7 @@ inquirer.prompt([
     type: "input",
     name: "userInput",
     message: "please declare your search",
+    default: "The Sign Ace of Base"
   }
 ])
 .then(function(user){
