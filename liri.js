@@ -18,15 +18,13 @@ inquirer.prompt([
   {
     type: "input",
     name: "userInput",
-    message: "please declare your search",
-    default: "The Sign Ace of Base"
+    message: "please declare your search"
   }
 ])
 .then(function(user){
-console.log(user.userInput);
 switch (user.choice) { 
   case "spotify-this-song":
-  spotify.search({ type: 'track', query: user.userInput }, function(err, data) {
+  spotify.search({ type: 'track', query: user.userInput || "the sign ace of base"}, function(err, data) {
   if (err) 
           return console.log('Sorry an error has occured: ' + err);
   for (var key in data) {
