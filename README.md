@@ -24,8 +24,11 @@ Open the terminal and run `node liri.js`
 3. "movie-this"
     If you do not enter a search it defaults the query to "Mr Nobody"
     ![movie no search gif](/images/giphy(3).gif)
+
     If you do enter a search it will display the title, year, imdb rating, rotten tomatoes rating, production company, and the language
+
     ![movie search gif](/images/giphy(4).gif)
 4. "do-what-it-says"
     Enter through the search and this will read a "random" file that calls the spotify api with a surpise search.
+    
     ![do it gif](/images/giphy(5).gif)
