@@ -10,21 +10,24 @@ const spotify = new Spotify(keys.spotify);
 
 inquirer.prompt([
   {
-    type: "list",
+    type: "rawlist",
     name: "choice",
-    message: "Please choose from the following options",
-    choices: ["spotify-this-song", "concert-this", "movie-this"]
+    message: "Please choose from the following options, if you cannot decide please select 'do-what-it-says' and press ENTER",
+    choices: ["spotify-this-song", "concert-this", "movie-this", "do-what-it-says"]
   },
   {
     type: "input",
     name: "userInput",
     message: "please declare your search"
-  }
+    }
 ])
 .then(function(user){
 switch (user.choice) { 
   case "spotify-this-song":
-  spotify.search({ type: 'track', query: user.userInput || "the sign ace of base"}, function(err, data) {
+  var input = user.userInput;
+  spotSearch(input);
+  function spotSearch(input){
+  spotify.search({ type: 'track', query: input|| "the sign ace of base"}, function(err, data) {
   if (err) 
           return console.log('Sorry an error has occured: ' + err);
   for (var key in data) {
@@ -36,6 +39,7 @@ switch (user.choice) {
        console.log("'" + name + "'" + " by: ", artist, "\n", preview, "\n", album);
   }
   })
+}
 break;
   case "concert-this":
   axios.get(`https://rest.bandsintown.com/artists/${user.userInput}/events?app_id=codingbootcamp`)
@@ -51,7 +55,7 @@ break;
   });
   break;
   case "movie-this":
-  axios.get(`http://www.omdbapi.com/?apikey=trilogy&t=${user.userInput}`)
+  axios.get(`http://www.omdbapi.com/?apikey=trilogy&t=${user.userInput || "mr nobody"}`)
       .then(function(response){
         var data = response.data;
         let title = data.Title;
@@ -68,6 +72,16 @@ break;
         console.log('Sorry an error has occured' + error);
       });
 break;
+case "do-what-it-says":
+fs.readFile("./random.txt", "utf8", function read(err, data){
+  if(err) {
+    console.log("sorry an error has occured: " + err);
+  } 
+  var content = data.split(",");
+  if (content[0] === "spotify-this-song"){
+    spotSearch(content[1]);
+  } 
+})
 default: 
 break;
 }
