@@ -4,11 +4,11 @@ https://github.com/gregory-rutherford/Liri-Node-App
 ## Link to the video
 https://www.youtube.com/watch?v=CMWQIw0jaOM&t=9s
 ### The Stack
-*Node.js
-*Moment.js
-*Axios
-*Inquirer
-*Dotenv
+* Node.js
+* Moment.js
+* Axios
+* Inquirer
+* Dotenv
 ### How it works
 In order to run this you will need your own .env file
 with the proper spotify keys and secret data. Create your own keys/secret here:
@@ -38,6 +38,6 @@ Open the terminal and run `node liri.js`
 
     ![do it gif](/images/giphy(5).gif)
 
-####Challenges
+#### Challenges
 
 I enjoyed making this as I am starting to feel more comfortable with my javascript ability. The first problem I met was using the switch case as previously I had only used `if/else` statements. The second problem had to do with getting the spotify and movie searches to default. I tried a few different ways but landed on using the `||` operator within the template literal. Outside of the code issues this was the first time I had installed npm packages, fairly straightforward but I did type in the wrong command a few times. This led to my understanding of the value of reading the documentation available. I also learned about `.gitignore` and why it is important to not commit everything to Github. 
